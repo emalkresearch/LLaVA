@@ -44,15 +44,6 @@ pip install -e ".[train]"
 pip install flash-attn --no-build-isolation
 ```
 
-### Upgrade to latest code base
-
-```Shell
-git pull
-pip install -e .
-
-# if you see some import errors when you upgrade, please try running the command below (without #)
-# pip install flash-attn --no-build-isolation --no-cache-dir
-```
 
 ### Quick Start With HuggingFace
 
@@ -101,6 +92,17 @@ eval_model(args)
 </details>
 
 ## Обработка данных
+
+Для обучения модели необходимо привести данные в подходящий для этого формат. За это отвечает скрипт [task_data_preprocessing.py](https://github.com/emalkresearch/LLaVA/blob/main/task_data_preprocessing.py).
+
+Было:
+
+(https://github.com/emalkresearch/LLaVA/blob/main/images/image1.png)
+
+Стало:
+
+(https://github.com/emalkresearch/LLaVA/blob/main/images/image1.png)
+
 ## Обучение
 ## Инференс
 
