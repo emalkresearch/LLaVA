@@ -101,7 +101,7 @@ eval_model(args)
 
 Стало:
 
-![.](https://github.com/emalkresearch/LLaVA/blob/main/images/image1.png)
+![.](https://github.com/emalkresearch/LLaVA/blob/main/images/image.png)
 
 ## Обучение
 ## Инференс
