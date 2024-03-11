@@ -115,7 +115,7 @@ eval_model(args)
 
 ``` python
 
-!python ./scripts/merge_lora_weights.py --model-path ./checkpoints/llava-v1.5-7b-task-lora --model-base liuhaotian/llava-v1.5-7b --save-model-path /output/llava_merged_model
+!python ./scripts/merge_lora_weights.py --model-path ./checkpoints/llava-v1.5-7b-task-lora --model-base liuhaotian/llava-v1.5-7b --save-model-path /llava_merged_model
 ```
 ## Инференс
 
