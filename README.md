@@ -1,8 +1,11 @@
 
 
 ## Contents
-- [Выбор модели](#Выбор-модели)
-- [Install](#install)
+- [Выбор и описание модели](#Выбор-и-описание-модели)
+- [Установка библиотек](#Установка-библиотек)
+- [Обработка данных](#Обработка-данных)
+- [Обучение](#Обучение)
+- [Инференс](#Инференс)
 - [LLaVA Weights](#llava-weights)
 - [Demo](#Demo)
 - [Model Zoo](https://github.com/haotian-liu/LLaVA/blob/main/docs/MODEL_ZOO.md)
@@ -10,11 +13,11 @@
 - [Train](#train)
 - [Evaluation](#evaluation)
 
-## Выбор модели
+## Выбор и описание модели
 
-ыфваыфвафы
+Для решения задачи VQA было принято решение использовать LLM. Согласно [статье](https://arxiv.org/pdf/2310.02567.pdf), в которой сравниваются бенчмарки различных мультимодальных LLM, одни из лучших показателей в секции VQAv2 (датасет из постановки задачи по стилю больше всего подходит под данный датасет) имеет LLaVA-1.5, поэтому я решил сфокусироваться на файнтюнинге этой мультимодальной LLM. [Скорборд моделей](https://github.com/emalkresearch/LLaVA-finetune/blob/main/images/photo_2024-03-11_07-03-32.jpg)
 
-## Install
+## Установка библиотек
 
 If you are not using Linux, do *NOT* proceed, see instructions for [macOS](https://github.com/haotian-liu/LLaVA/blob/main/docs/macOS.md) and [Windows](https://github.com/haotian-liu/LLaVA/blob/main/docs/Windows.md).
 
@@ -93,6 +96,11 @@ args = type('Args', (), {
 eval_model(args)
 ```
 </details>
+
+## Обработка данных
+## Обучение
+## Инференс
+
 
 ## LLaVA Weights
 Please check out our [Model Zoo](https://github.com/haotian-liu/LLaVA/blob/main/docs/MODEL_ZOO.md) for all public LLaVA checkpoints, and the instructions of how to use the weights.
