@@ -59,7 +59,7 @@ pip install flash-attn --no-build-isolation
 Для запуска обучения также потребуется загрузить фотографии в playground/data_train/images
 ## Обучение
 
-Для обучения модели с LoRA запускается скрипт [finetune_task_lora.sh](https://github.com/emalkresearch/LLaVA/blob/main/scripts/v1_5/finetune_task_lora.sh)
+Чтобы зафайнтюнить модель с использованием LoRA, запускается сценарий [finetune_task_lora.sh](https://github.com/emalkresearch/LLaVA/blob/main/scripts/v1_5/finetune_task_lora.sh)
 
 Далее объединяем веса LoRA с обновленными весами модели с помощью скрипта [merge_lora_weights.py](https://github.com/emalkresearch/LLaVA/blob/main/scripts/merge_lora_weights.py) используя команду:
 
