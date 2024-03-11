@@ -1,5 +1,6 @@
 
 
+
 ## Contents
 - [Выбор и описание модели](#Выбор-и-описание-модели)
 - [Установка библиотек](#Установка-библиотек)
@@ -15,21 +16,21 @@
 
 ## Выбор и описание модели
 
-Для решения задачи VQA было принято решение использовать LLM. Согласно [статье](https://arxiv.org/pdf/2310.02567.pdf), в которой сравниваются бенчмарки различных мультимодальных LLM, одни из лучших показателей в секции VQAv2 (датасет из постановки задачи по стилю больше всего подходит под данный датасет) имеет LLaVA-1.5, поэтому я решил сфокусироваться на файнтюнинге LLaVA-1.5-7b. ![Скорборд моделей](https://github.com/emalkresearch/LLaVA-finetune/blob/main/images/photo_2024-03-11_07-03-32.jpg)
+Для решения задачи VQA было принято решение использовать LLM. Согласно [статье](https://arxiv.org/pdf/2310.02567.pdf), в которой сравниваются бенчмарки различных мультимодальных LLM, одни из лучших показателей в секции VQAv2 (датасет из постановки задачи по стилю больше всего подходит под данный датасет) имеет LLaVA-1.5, поэтому я решил сфокусироваться на файнтюнинге LLaVA-1.5-7b. ![Скорборд моделей](https://github.com/emalkresearch/LLaVA/blob/main/images/photo_2024-03-11_07-03-32.jpg)
 
-Три основных элемента архитектуры данной модели: Visual Encoder, MLP и LLM. Visual Encoder, а именно CLIP ViT-L/14, необходим для получения эмбеддингов изображений, которые мы хотим подать в LLM, а MLP приводит эмбеддинги к соответствующей размерности. В качестве LLM используется Vicuna-1.5 ![Архитектура модели](https://github.com/emalkresearch/LLaVA-finetune/blob/main/images/llava_architecture.jpg)
+Три основных элемента архитектуры данной модели: Visual Encoder, MLP и LLM. Visual Encoder, а именно CLIP ViT-L/14, необходим для получения эмбеддингов изображений, которые мы хотим подать в LLM, а MLP приводит эмбеддинги к соответствующей размерности. В качестве LLM используется Vicuna-1.5 ![Архитектура модели](https://github.com/emalkresearch/LLaVA/blob/main/images/llava_architecture.jpg)
 
 ## Установка библиотек
 
-If you are not using Linux, do *NOT* proceed, see instructions for [macOS](https://github.com/haotian-liu/LLaVA/blob/main/docs/macOS.md) and [Windows](https://github.com/haotian-liu/LLaVA/blob/main/docs/Windows.md).
+Установка для ОС Linux приведена ниже. [macOS](https://github.com/emalkresearch/LLaVA/blob/main/docs/macOS.md) and [Windows](https://github.com/emalkresearch/LLaVA/blob/main/docs/Windows.md).
 
-1. Clone this repository and navigate to LLaVA folder
+1. Клонирование репозитория
 ```bash
-git clone https://github.com/haotian-liu/LLaVA.git
+git clone https://github.com/emalkresearch/LLaVA.git
 cd LLaVA
 ```
 
-2. Install Package
+2. Установка библиотек
 ```Shell
 conda create -n llava python=3.10 -y
 conda activate llava
@@ -37,7 +38,7 @@ pip install --upgrade pip  # enable PEP 660 support
 pip install -e .
 ```
 
-3. Install additional packages for training cases
+3. Установка дополнительных библиотек для обучения
 ```
 pip install -e ".[train]"
 pip install flash-attn --no-build-isolation
