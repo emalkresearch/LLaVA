@@ -97,11 +97,11 @@ eval_model(args)
 
 Было:
 
-(https://github.com/emalkresearch/LLaVA/blob/main/images/image1.png)
+![.](https://github.com/emalkresearch/LLaVA/blob/main/images/image1.png)
 
 Стало:
 
-(https://github.com/emalkresearch/LLaVA/blob/main/images/image1.png)
+![.](https://github.com/emalkresearch/LLaVA/blob/main/images/image1.png)
 
 ## Обучение
 ## Инференс
