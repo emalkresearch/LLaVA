@@ -103,6 +103,10 @@ eval_model(args)
 
 ![.](https://github.com/emalkresearch/LLaVA/blob/main/images/image.png)
 
+
+При запуске в директории playground/data_train появится файл data.json
+
+Для запуска обучения также потребуется загрузить фотографии в playground/data_train/images
 ## Обучение
 ## Инференс
 
