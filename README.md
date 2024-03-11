@@ -111,7 +111,7 @@ eval_model(args)
 
 Для обучения модели с LoRA запускается скрипт [finetune_task_lora.sh](https://github.com/emalkresearch/LLaVA/blob/main/scripts/v1_5/finetune_task_lora.sh)
 
-Далее объединяем веса LoRA с обновленными весами модели с помощью скрипта (merge_lora_weights.py)[https://github.com/emalkresearch/LLaVA/blob/main/scripts/merge_lora_weights.py] используя команду:
+Далее объединяем веса LoRA с обновленными весами модели с помощью скрипта [merge_lora_weights.py](https://github.com/emalkresearch/LLaVA/blob/main/scripts/merge_lora_weights.py) используя команду:
 
 ``` python
 
@@ -119,6 +119,9 @@ eval_model(args)
 ```
 ## Инференс
 
+Для инференса модели надо загрузить данные в папку /playground/data_infer/, а именно загрузить папку images с картинками и подготовить файл с промптами и названиями картинок в jsonl формате:
+
+![.](https://github.com/emalkresearch/LLaVA/blob/main/images/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202024-03-11%20085600.png)
 
 ## LLaVA Weights
 Please check out our [Model Zoo](https://github.com/haotian-liu/LLaVA/blob/main/docs/MODEL_ZOO.md) for all public LLaVA checkpoints, and the instructions of how to use the weights.
