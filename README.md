@@ -6,7 +6,7 @@
 - [Установка библиотек](#Установка-библиотек)
 - [Обработка данных](#Обработка-данных)
 - [Обучение](#Обучение)
-- [Инференс](#Инференс)
+- [Оценка и инференс](#Оценка-и-инференс)
 - [LLaVA Weights](#llava-weights)
 - [Demo](#Demo)
 - [Model Zoo](https://github.com/haotian-liu/LLaVA/blob/main/docs/MODEL_ZOO.md)
@@ -117,11 +117,63 @@ eval_model(args)
 
 !python ./scripts/merge_lora_weights.py --model-path ./checkpoints/llava-v1.5-7b-task-lora --model-base liuhaotian/llava-v1.5-7b --save-model-path /llava_merged_model
 ```
-## Инференс
+## Оценка и инференс
 
-Для инференса модели надо загрузить данные в папку /playground/data_infer/, а именно загрузить папку images с картинками и подготовить файл с промптами и названиями картинок в jsonl формате:
+В первую очередь надо скачать саму [модель](https://storage.googleapis.com/llavaxd/model/llava_merged_model.zip) и поместить папку llava_merged_model в корневую. 
+
+Для оценки модели надо загрузить данные в папку /playground/data_infer/, а именно загрузить папку images с картинками и подготовить файл с промптами и названиями картинок в jsonl формате:
 
 ![.](https://github.com/emalkresearch/LLaVA/blob/main/images/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202024-03-11%20085600.png)
+
+Далее следует запустить скрипт [inference.sh](https://github.com/emalkresearch/LLaVA/blob/main/inference.sh), в папке /playground/data_infer/ появится jsonl файл с ответами модели.
+
+Также можно использовать код:
+
+``` python
+
+from llava.model.builder import load_pretrained_model
+from llava.mm_utils import get_model_name_from_path
+from llava.eval.run_llava import eval_model
+
+fine_tuned_model_path = "llava_merged_model"
+
+tokenizer, model, image_processor, context_len = load_pretrained_model(
+    model_path=fine_tuned_model_path,
+    model_base=None,  
+    model_name=get_model_name_from_path(fine_tuned_model_path)
+)
+
+    
+prompt = 'Промпт без <Image>\n'
+image_file = f"playground/data_train/images/{item['image']}"
+# Set up evaluation arguments
+args = type('Args', (), {
+    "model_path": fine_tuned_model_path,
+    "model_base": None,
+    "model_name": get_model_name_from_path(fine_tuned_model_path),
+    "query": prompt,
+    "conv_mode": None,
+    "image_file": image_file,
+    "sep": ",",
+    "temperature": 0,
+    "top_p": None,
+    "num_beams": 1,
+    "max_new_tokens": 512
+})()
+
+eval_model(args)
+
+```
+
+Для инференса модели с возможностью продолжительного диалога можно использовать команду:
+
+``` python
+python -m llava.serve.cli \
+    --model-path liuhaotian/llava-v1.5-7b \
+    --image-file "https://llava-vl.github.io/static/images/view.jpg" \
+    #--load-4bit (квантизация позволяет добиться примерно 8 требуемых ГБ GPU для инференса)
+
+``` 
 
 ## LLaVA Weights
 Please check out our [Model Zoo](https://github.com/haotian-liu/LLaVA/blob/main/docs/MODEL_ZOO.md) for all public LLaVA checkpoints, and the instructions of how to use the weights.
