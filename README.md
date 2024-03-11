@@ -108,6 +108,15 @@ eval_model(args)
 
 Для запуска обучения также потребуется загрузить фотографии в playground/data_train/images
 ## Обучение
+
+Для обучения модели с LoRA запускается скрипт [finetune_task_lora.sh](https://github.com/emalkresearch/LLaVA/blob/main/scripts/v1_5/finetune_task_lora.sh)
+
+Далее объединяем веса LoRA с обновленными весами модели с помощью скрипта (merge_lora_weights.py)[https://github.com/emalkresearch/LLaVA/blob/main/scripts/merge_lora_weights.py] используя команду:
+
+``` python
+
+!python ./scripts/merge_lora_weights.py --model-path ./checkpoints/llava-v1.5-7b-task-lora --model-base liuhaotian/llava-v1.5-7b --save-model-path /output/llava_merged_model
+```
 ## Инференс
 
 
